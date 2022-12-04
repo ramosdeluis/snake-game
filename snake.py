@@ -1,6 +1,9 @@
 from turtle import Turtle
 
 
+from constants import *
+
+
 class Snake(Turtle):
     def __init__(self):
         super().__init__()
@@ -9,7 +12,7 @@ class Snake(Turtle):
         self.head = self.segments[0]
 
     def star_game(self):
-        for c in range(3):
+        for c in range(SNAKE_INITIAL_SIZE):
             self.create_snake((0, 0))
 
     def create_snake(self, position):
