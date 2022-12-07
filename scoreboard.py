@@ -35,9 +35,9 @@ class ScoreBoard(Turtle):
 
     def get_high_score(self):
         with open('high_score.txt', mode='r') as file:
-            self.high_score = int(file.read()[-1])
+            self.high_score = int(file.read())
             print(self.high_score)
 
     def make_high_score(self):
         with open('high_score.txt', mode='w') as file:
-            file.write(f'high_score={self.high_score}')
+            file.write(f'{self.high_score}')
