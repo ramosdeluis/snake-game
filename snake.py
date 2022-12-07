@@ -15,6 +15,13 @@ class Snake(Turtle):
         for c in range(SNAKE_INITIAL_SIZE):
             self.create_snake((0, 0))
 
+    def reset(self) -> None:
+        for seg in self.segments:
+            seg.hideturtle()
+        self.segments.clear()
+        self.star_game()
+        self.head = self.segments[0]
+
     def create_snake(self, position):
         segment = Turtle(shape='square')
         segment.color('white')
