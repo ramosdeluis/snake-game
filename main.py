@@ -28,7 +28,6 @@ screen.onkey(fun=snake.move_right, key='d')
 game_is_on = True
 
 while game_is_on:
-    screen.update()
     sleep(GAME_SPEED)
     snake.move()
 
@@ -42,13 +41,12 @@ while game_is_on:
     if snake.head.xcor() > 280 or snake.head.ycor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() < -280:
         scoreboard.reset()
         snake.reset()
-        screen.update()
 
     # Detect collision with the tail.
     for seg in snake.segments[1:]:
         if seg.distance(snake.head) < 10:
             scoreboard.reset()
             snake.reset()
-            screen.update()
+    screen.update()
 
 screen.exitonclick()

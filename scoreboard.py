@@ -13,11 +13,14 @@ class ScoreBoard(Turtle):
         self.penup()
         self.hideturtle()
         self.score = 0
+        self.get_high_score()
+        self.make_high_score()
         self.refresh_board()
 
     def reset(self) -> None:
         if self.score > self.high_score:
             self.high_score = self.score
+            self.make_high_score()
         self.score = 0
         self.refresh_board()
 
@@ -29,3 +32,12 @@ class ScoreBoard(Turtle):
         self.clear()
         self.write(arg=f'Score: {self.score} / High Score: {self.high_score}',
                    move=False, align='center', font=('Arial', SCORE_FONT_SIZE, 'normal'))
+
+    def get_high_score(self):
+        with open('high_score.txt', mode='r') as file:
+            self.high_score = int(file.read()[-1])
+            print(self.high_score)
+
+    def make_high_score(self):
+        with open('high_score.txt', mode='w') as file:
+            file.write(f'high_score={self.high_score}')
